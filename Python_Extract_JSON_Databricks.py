@@ -5,9 +5,9 @@ import requests
 from datetime import datetime
 from pyspark.sql import functions as F
 
-url = "https://wd5-url" 
+url = "https://wd5-url" # replace with the actual URL for the API /  report you want to download
 
-user = "username"
+user = "username" # use secrets preferably - hard-coding username/password is not recommended for production code, consider using Databricks secrets or environment variables to store sensitive information securely
 pwd = "password"
  
 
