@@ -28,12 +28,19 @@ with open(raw_path, 'wb') as f:
 
 print(f"Downloaded to {raw_path}")
 
- 
+#################################################################################################################################################
+
+
+ # I created a new cell in databricks for this below
 
 df_raw = spark.read.option('mode', 'PERMISSIVE').option('multiLine', 'true').json(raw_path)
 df_flat = df_raw.select(F.explode("Report_Entry").alias("entry")).select("entry.*")
 # display(df_flat.limit(5)) # uncomment to display the first 5 rows of the flattened DataFrame for verification 
 
+#################################################################################################################################################
+
+ # I created a new cell in databricks for this below
  
 
-df_flat.write.mode("overwrite").saveAsTable("dev.bronze.workday_client_report_manual") #  This will write the table, overwriting any existing data in the "dev.bronze.workday_client_report_manual" table. Adjust the mode as needed (e.g., "append" to add to existing data instead of overwriting).
+df_flat.write.mode("overwrite").saveAsTable("dev.bronze.workday_client_report_manual") 
+#  This will write the table, overwriting any existing data in the "dev.bronze.workday_client_report_manual" table. Adjust the mode as needed (e.g., "append" to add to existing data instead of overwriting).
